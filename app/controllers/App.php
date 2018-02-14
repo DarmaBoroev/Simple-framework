@@ -5,18 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 namespace app\controllers;
+
 /**
- * Description of Main
+ * Description of App
  *
  * @author dboro
  */
-class Main extends App{
-    public function indexAction() {
-//        $this->layout = false;
-        $name = 'darma';
-        $hi = 'hi';
-        $this->set(compact('name', 'hi'));
-        
-    }
+class App extends \vendor\core\base\Controller  {
+    //put your code here
 }

@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+namespace vendor\core;
 /**
  * Description of Router
  *
@@ -66,6 +66,7 @@ class Router {
                 if(!isset($route['action'])){
                     $route['action'] = 'index';
                 }
+                $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
                 return true;
             }
@@ -79,13 +80,15 @@ class Router {
      * @return void
      */
     public static function dispatch($url){
+        $url = self::removeQueryString($url);
         if(self::matchRoute($url)){
-            $controller = self::upperCamelCase(self::$route['controller']);
+            $controller = 'app\controllers\\' . self::$route['controller'];
             if(class_exists($controller)){
-                $cObj = new $controller;
+                $cObj = new $controller(self::$route);
                 $action = self::lowerCamelCase(self::$route['action']) . 'Action';
                 if(method_exists($cObj, $action)){
                     $cObj->$action();
+                    $cObj->getView();
                 }else{
                     echo "Method $controller::$action not found";
                 }
@@ -104,6 +107,22 @@ class Router {
     
     protected static function lowerCamelCase($name){
         return lcfirst(self::upperCamelCase($name));
+    }
+    
+    /**
+     * Обрезает URL
+     * @param string $url
+     * @return string
+     */
+    protected static function removeQueryString($url){
+        if($url){
+            $params = explode('&', $url);
+            if(false === strpos($params[0], '=')){
+                return rtrim($params[0], '/');
+            }else{
+                return '';
+            }
+        }
     }
     
 }

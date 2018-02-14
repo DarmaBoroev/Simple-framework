@@ -5,13 +5,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+namespace app\controllers;
 /**
  * Description of PostsNew
  *
  * @author dboro
  */
-class PostsNew {
+class PostsNew extends App{
     public function indexAction() {
         echo 'PostsNew::index';
     }
