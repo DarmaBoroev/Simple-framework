@@ -47,6 +47,10 @@ abstract class Controller {
         $vObj->render($this->vars);
     }
     
+    /**
+     * Передает в вид переменные
+     * @param array $vars
+     */
     public function set($vars){
         $this->vars = $vars;
     }

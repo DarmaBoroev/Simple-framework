@@ -101,16 +101,26 @@ class Router {
         }
     }
     
+    /**
+     * форматирует имя контроллера
+     * @param string $name имя контроллера из URL
+     * @return string
+     */
     protected static function upperCamelCase($name){
         return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
     }
     
+    /**
+     * форматирует имя метода
+     * @param string $name имя метода из URL
+     * @return string
+     */
     protected static function lowerCamelCase($name){
         return lcfirst(self::upperCamelCase($name));
     }
     
     /**
-     * Обрезает URL
+     * Обрезает из URL параметры
      * @param string $url
      * @return string
      */

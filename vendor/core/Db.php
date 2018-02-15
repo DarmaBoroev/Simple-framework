@@ -28,26 +28,40 @@ class Db {
         $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass'], $options);
     }
     
+    /**
+     * Подключение к базе данных
+     * @return type
+     */
     public static function instance(){
-        if(self::$instance === NULL){
+        if(self::$instance === null){
             self::$instance = new self;
         }
         return self::$instance;
     }
     
+    /**
+     * Выполнение запроса к бд(без возврата из бд данных)
+     * @param string $sql
+     * @return bool
+     */
     public function execute($sql, $params = []){
         self::$countSql++;
-        self::$queries[] = $sql;
+        self::$queries = $sql;
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute($params);
     }
     
+    /**
+     * Выполнение запроса к бд с возратом даннах из бд
+     * @param string $sql
+     * @return array
+     */
     public function query($sql, $params = []){
         self::$countSql++;
-        self::$queries[] = $sql;
+        self::$queries = $sql;
         $stmt = $this->pdo->prepare($sql);
         $res = $stmt->execute($params);
-        if($res !== FALSE){
+        if($res !==false){
             return $stmt->fetchAll();
         }
         return [];

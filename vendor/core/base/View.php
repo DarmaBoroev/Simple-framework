@@ -42,7 +42,11 @@ class View {
         }
         $this->view = $view;
     }
-
+    
+    /**
+     * Подключает нужный вид и шаблон
+     * @param array $vars
+     */
     public function render($vars) {
         if(is_array($vars)) extract($vars);
         $file_view = APP . "/views/{$this->route['controller']}/$this->view.php";
