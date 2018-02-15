@@ -17,6 +17,10 @@ class MainController extends AppController{
         $model = new Main;
         $posts = $model->findAll();
         $posts2 = $model->findAll();
+//        $post = $model->findOne(2);
+//        $data = $model->findBySql("SELECT * FROM {$model->table} WHERE description LIKE ?", ['%on2%']);
+        $data = $model->findByLike('on2', 'description');
+        debug($data);
         $title = 'Page title';
         $this->set(compact('title', 'posts'));
         
