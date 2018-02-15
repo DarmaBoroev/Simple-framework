@@ -5,18 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace app\controllers;
+
+namespace app\models;
+
 /**
- * Description of Posts
+ * Description of Main
  *
  * @author dboro
  */
-class Posts extends App{
-    public function indexAction() {
-        echo 'Posts::index';
-    }
-    
-    public function testAction(){
-        debug($this->route);
-    }
+class Main extends \vendor\core\base\Model{
+    public $table = 'posts';
 }

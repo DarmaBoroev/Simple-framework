@@ -5,18 +5,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 namespace app\controllers;
-
 /**
- * Description of Page
+ * Description of Posts
  *
  * @author dboro
  */
-class Page extends App{
-    
-    public function viewAction(){
-        
+class PostsController extends AppController{
+    public function indexAction() {
+        echo 'Posts::index';
     }
     
+    public function testAction(){
+        debug($this->route);
+    }
 }

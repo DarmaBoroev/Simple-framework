@@ -6,21 +6,19 @@
  * and open the template in the editor.
  */
 namespace app\controllers;
+use app\models\Main;
 /**
- * Description of PostsNew
+ * Description of Main
  *
  * @author dboro
  */
-class PostsNew extends App{
+class MainController extends AppController{
     public function indexAction() {
-        echo 'PostsNew::index';
-    }
-    
-    public function testAction(){
-        echo 'PostsNew::test';
-    }
-    
-    public function testPageAction(){
-        echo 'PostsNew::testPageAction';
+        $model = new Main;
+        $posts = $model->findAll();
+        $posts2 = $model->findAll();
+        $title = 'Page title';
+        $this->set(compact('title', 'posts'));
+        
     }
 }

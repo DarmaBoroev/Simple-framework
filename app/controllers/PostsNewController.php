@@ -7,16 +7,20 @@
  */
 namespace app\controllers;
 /**
- * Description of Main
+ * Description of PostsNew
  *
  * @author dboro
  */
-class Main extends App{
+class PostsNewController extends AppController{
     public function indexAction() {
-//        $this->layout = false;
-        $name = 'darma';
-        $hi = 'hi';
-        $this->set(compact('name', 'hi'));
-        
+        echo 'PostsNew::index';
+    }
+    
+    public function testAction(){
+        echo 'PostsNew::test';
+    }
+    
+    public function testPageAction(){
+        echo 'PostsNew::testPageAction';
     }
 }
